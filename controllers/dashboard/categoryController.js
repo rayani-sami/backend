@@ -74,6 +74,10 @@ class categoryController {
             console.log(error.message)
         }
     }
+
+
+
+    
 }
 
 module.exports = new categoryController()

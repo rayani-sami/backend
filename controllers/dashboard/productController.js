@@ -143,6 +143,26 @@ class productController {
             }
         })
     }
+   
+    delete_product = async (req, res) => {
+        const { productId } = req.params;
+    
+        try {
+            // Supprime le produit de la base de données
+            const deletedProduct = await productModel.findByIdAndDelete(productId);
+    
+            if (!deletedProduct) {
+                return responseReturn(res, 404, { error: 'Produit non trouvé' });
+            }
+    
+            responseReturn(res, 200, { message: 'Produit supprimé avec succès' });
+        } catch (error) {
+            responseReturn(res, 500, { error: error.message });
+        }
+    }
+    
+
+
 }
 
 module.exports = new productController()
